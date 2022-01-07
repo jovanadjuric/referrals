@@ -1,17 +1,17 @@
 import { useState, useContext } from "react";
 import Input from "../../Components/Input";
 
-const Entry = (addNewEntry) => {
-  const [entry, setEntry] = useState({
-    firstName: "",
-    lastName: "",
-    dateOfBirth: "",
-    contactLanguage: "",
-    phone: "",
-    email: "",
-    address: "",
-    notes: "",
-  });
+const Entry = ({ entry }) => {
+  // const [entry, setEntry] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   dateOfBirth: "",
+  //   contactLanguage: "",
+  //   phone: "",
+  //   email: "",
+  //   address: "",
+  //   notes: "",
+  // });
 
   return (
     <div>

@@ -1,17 +1,21 @@
 import { useState, useContext, useEffect } from "react";
 import Entries from "./Sections/Entries/Entries";
-import SubmitButton from "./Components/SubmitButton/SubmitButton";
+import Button from "./Components/Button/Button";
 import { EntriesContext } from "./Context/entries";
 
 function App() {
-  const [entriesCount, setEntriesCount] = useState(1);
-  const { addEntry } = useContext(EntriesContext);
+  const [entriesCount, setEntriesCount] = useState(0);
+  const { addEntry, entries } = useContext(EntriesContext);
 
   const addNewEntry = () => {
-    if (entriesCount <= 5) {
+    if (entriesCount < 5) {
       setEntriesCount((entriesCount) => entriesCount + 1);
       addEntry({});
     }
+  };
+
+  const onSaveRefferals = () => {
+    console.log(entries);
   };
 
   useEffect(() => {
@@ -26,7 +30,7 @@ function App() {
       <button style={{ marginBottom: "10px" }} onClick={addNewEntry}>
         +Add another referral
       </button>
-      <SubmitButton />
+      <Button onClick={onSaveRefferals} text="Save referrals" />
     </div>
   );
 }

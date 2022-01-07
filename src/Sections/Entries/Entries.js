@@ -8,7 +8,7 @@ const Entries = () => {
   return (
     <>
       {entries.map((entry, index) => (
-        <Entry key={index} />
+        <Entry key={index} entry={entry} />
       ))}
     </>
   );
