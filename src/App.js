@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Entries from "./Sections/Entries/Entries";
 import SubmitButton from "./Components/SubmitButton/SubmitButton";
 import { EntriesContext } from "./Context/entries";
@@ -13,6 +13,10 @@ function App() {
       addEntry({});
     }
   };
+
+  useEffect(() => {
+    addNewEntry();
+  }, []);
 
   return (
     <div className="container">
