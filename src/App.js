@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import Entries from "./Sections/Entries/Entries";
 import Button from "./Components/Button/Button";
+import PlainButton from "./Components/Button/PlainButton";
 import { EntriesContext } from "./Context/entries";
 import "bootstrap/dist/css/bootstrap.min.css";
-import PlainButton from "./Components/Button/PlainButton";
+import "react-datepicker/dist/react-datepicker.css";
 
 function App() {
   const defaultFields = {

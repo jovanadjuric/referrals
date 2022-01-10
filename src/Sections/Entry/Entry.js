@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Input from "../../Components/Input";
 import { validateEmail, validatePhone } from "../../utils/validator";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
+import ReactDatePicker from "react-datepicker";
 
 const Entry = ({
   entry,
@@ -11,6 +12,8 @@ const Entry = ({
   setIsError,
 }) => {
   const [data, setData] = useState({ ...entry });
+  const [birthDate, setBirthDate] = useState(new Date());
+
   const returnData = (key, returnValue) => {
     setData((prevData) => ({
       ...prevData,
@@ -20,6 +23,14 @@ const Entry = ({
 
   const handleOnDelete = () => {
     onDeleteHandler(index);
+  };
+
+  const handleBirthDate = (date) => {
+    setBirthDate(date);
+    setData((prevData) => ({
+      ...prevData,
+      ["dateOfBirth"]: date,
+    }));
   };
 
   const handleEmailField = (evt) => {
@@ -92,12 +103,17 @@ const Entry = ({
           />
         </div>
         <div className="input-group mb-2">
-          <Input
+          {/* <Input
             type="text"
             required
             placeholder="Date of birth"
             value={data.dateOfBirth}
             onChange={(evt) => returnData("dateOfBirth", evt.target.value)}
+          /> */}
+          <ReactDatePicker
+            selected={birthDate}
+            onChange={handleBirthDate}
+            excludeTimes
           />
         </div>
         <div className="input-group mb-2">
