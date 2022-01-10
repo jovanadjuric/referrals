@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { EntriesContext } from "../../Context/entries";
 import Entry from "../Entry/Entry";
 
-const Entries = () => {
+const Entries = ({ setIsError }) => {
   const { entries, removeEntry, changeEntry } = useContext(EntriesContext);
 
   const handleOnDelete = (index) => {
@@ -11,7 +11,7 @@ const Entries = () => {
 
   return (
     <>
-      <div>
+      <div className="w-100">
         {entries.map((entry, index) => (
           <Entry
             key={index}
@@ -19,6 +19,7 @@ const Entries = () => {
             entry={entry}
             onChangeHandler={changeEntry}
             onDeleteHandler={handleOnDelete}
+            setIsError={setIsError}
           />
         ))}
       </div>
