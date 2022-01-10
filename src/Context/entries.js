@@ -17,6 +17,11 @@ export const EntriesProvider = ({ children }) => {
     setEntries((entries) => entries.filter((_, i) => i !== index));
   };
 
+  const changeEntry = (index, entry) => {
+    let cloneEntry = {...entry};
+    setEntries(entries[index] = cloneEntry);
+  }
+
   return (
     <EntriesContext.Provider value={{ entries, addEntry, removeEntry }}>
       {children}

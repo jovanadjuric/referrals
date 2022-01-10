@@ -3,13 +3,20 @@ import { EntriesContext } from "../../Context/entries";
 import Entry from "../Entry/Entry";
 
 const Entries = () => {
-  const { entries } = useContext(EntriesContext);
+  const { entries, removeEntry,changeEntry } = useContext(EntriesContext);
 
   return (
     <>
-      {entries.map((entry, index) => (
-        <Entry key={index} entry={entry} />
-      ))}
+      <form>
+        {entries.map((entry, index) => (
+          <Entry key={index} 
+            entry={entry} 
+            index={index} 
+            onChangeHandler={changeEntry}
+            onDeleteHandler={() => removeEntry(index)} 
+          />
+        ))}
+      </form>
     </>
   );
 };
