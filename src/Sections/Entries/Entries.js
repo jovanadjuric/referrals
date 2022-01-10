@@ -5,18 +5,23 @@ import Entry from "../Entry/Entry";
 const Entries = () => {
   const { entries, removeEntry, changeEntry } = useContext(EntriesContext);
 
+  const handleOnDelete = (index) => {
+    removeEntry(index);
+  };
+
   return (
     <>
-      <form>
+      <div>
         {entries.map((entry, index) => (
-          <Entry key={index} 
-            entry={entry} 
-            index={index} 
+          <Entry
+            key={index}
+            index={index}
+            entry={entry}
             onChangeHandler={changeEntry}
-            onDeleteHandler={() => removeEntry(index)} 
+            onDeleteHandler={handleOnDelete}
           />
         ))}
-      </form>
+      </div>
     </>
   );
 };

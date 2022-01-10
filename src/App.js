@@ -4,13 +4,22 @@ import Button from "./Components/Button/Button";
 import { EntriesContext } from "./Context/entries";
 
 function App() {
-  const [entriesCount, setEntriesCount] = useState(0);
+  const defaultFields = {
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    contactLanguage: "",
+    phone: "",
+    email: "",
+    address: "",
+    notes: "",
+  };
+
   const { addEntry, entries } = useContext(EntriesContext);
 
-  const addNewEntry = (entries) => {
-    if (entriesCount < 5) {
-      setEntriesCount((entriesCount) => entriesCount + 1);
-      addEntry(entries);
+  const addNewEntry = () => {
+    if (entries.length < 5) {
+      addEntry(defaultFields);
     }
   };
 
@@ -19,26 +28,7 @@ function App() {
   };
 
   useEffect(() => {
-    addNewEntry({
-        firstName: "Pero",
-         lastName: "Perić",
-         dateOfBirth: "",
-         contactLanguage: "",
-         phone: "",
-         email: "",
-         address: "",
-         notes: "",
-      });
-      addNewEntry({
-          firstName: "Mato",
-           lastName: "Matovina",
-           dateOfBirth: "",
-           contactLanguage: "",
-           phone: "",
-           email: "",
-           address: "",
-           notes: "",
-        });
+    addNewEntry(defaultFields);
   }, []);
 
   return (
