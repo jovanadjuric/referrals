@@ -3,7 +3,7 @@ import { EntriesContext } from "../../Context/entries";
 import Entry from "../Entry/Entry";
 
 const Entries = () => {
-  const { entries, removeEntry,changeEntry } = useContext(EntriesContext);
+  const { entries, removeEntry, changeEntry } = useContext(EntriesContext);
 
   return (
     <>

@@ -18,12 +18,12 @@ export const EntriesProvider = ({ children }) => {
   };
 
   const changeEntry = (index, entry) => {
-    let cloneEntry = {...entry};
-    setEntries(entries[index] = cloneEntry);
+    entries[index] = entry
+    setEntries(entries);
   }
 
   return (
-    <EntriesContext.Provider value={{ entries, addEntry, removeEntry }}>
+    <EntriesContext.Provider value={{ entries, addEntry, removeEntry, changeEntry }}>
       {children}
     </EntriesContext.Provider>
   );
