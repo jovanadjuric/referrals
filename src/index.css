@@ -100,3 +100,17 @@ h5 {
 h5 {
   margin-bottom: 0 !important;
 }
+
+.alert-success {
+  min-height: 50px;
+  background-color: #25a575 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 20px !important;
+  border-radius: 0px 0px 34.5px 34.5px !important;
+}
+
+.alert-success p {
+  color: #fff !important;
+}
