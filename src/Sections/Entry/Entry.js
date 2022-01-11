@@ -9,7 +9,6 @@ const Entry = ({
   onChangeHandler,
   onDeleteHandler,
   onCollapseHandler,
-  setIsError,
 }) => {
   const [data, setData] = useState({ ...entry });
   const [birthDate, setBirthDate] = useState(new Date());

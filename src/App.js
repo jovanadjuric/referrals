@@ -19,7 +19,6 @@ function App() {
     notes: "",
   };
 
-  const [isError, setIsError] = useState(true);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [entriesCount, setEntriesCount] = useState(0);
 
@@ -32,14 +31,11 @@ function App() {
   };
 
   const onSendRefferals = () => {
-    if (!isError) {
-      console.log("Form successfully submitted", entries);
-      setIsFormSubmitted(true);
-      setEntriesCount(entries.length);
-      resetEntries();
-      addNewEntry("reset");
-      setIsError(true);
-    }
+    console.log("Form successfully submitted", entries);
+    setIsFormSubmitted(true);
+    setEntriesCount(entries.length);
+    resetEntries();
+    addNewEntry("reset");
   };
 
   useEffect(() => {
@@ -62,18 +58,14 @@ function App() {
           <h5>You can add up to five refferals at a time</h5>
         </div>
 
-        <Entries setIsError={setIsError} />
+        <Entries />
 
         <PlainButton
           onClick={addNewEntry}
           text={"+Add another referral"}
         ></PlainButton>
 
-        <Button
-          onClick={onSendRefferals}
-          text="Send referrals"
-          isDisabled={isError}
-        />
+        <Button onClick={onSendRefferals} text="Send referrals" />
       </div>
     </>
   );
