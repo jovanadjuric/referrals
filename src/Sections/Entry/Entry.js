@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Input from "../../Components/Input";
 import LocationSearchInput from "../../Components/PlacesAutocomplete";
-import { validateEmail, validatePhone } from "../../utils/validator";
-import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import ReactDatePicker from "react-datepicker";
 
 const Entry = ({
@@ -35,29 +33,15 @@ const Entry = ({
     setBirthDate(date);
     setData((prevData) => ({
       ...prevData,
-      ["dateOfBirth"]: date,
+      dateOfBrith: date,
     }));
   };
 
   const handleEmailField = (evt) => {
-    setTimeout(() => {
-      if (!validateEmail(evt.target.value)) {
-        setIsError(true);
-      } else {
-        setIsError(false);
-      }
-    }, 500);
     returnData("email", evt.target.value);
   };
 
   const handlePhoneField = (evt) => {
-    setTimeout(() => {
-      if (!validatePhone(evt.target.value)) {
-        setIsError(true);
-      } else {
-        setIsError(false);
-      }
-    }, 500);
     returnData("phone", evt.target.value);
   };
 
@@ -67,6 +51,7 @@ const Entry = ({
 
   useEffect(() => {
     onChangeHandler(index, data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, data]);
 
   useEffect(() => {

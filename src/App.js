@@ -26,23 +26,25 @@ function App() {
   const { addEntry, entries, resetEntries } = useContext(EntriesContext);
 
   const addNewEntry = (type) => {
-    console.log(entries.length);
     if (entries.length < 5 || type === "reset") {
       addEntry(defaultFields);
     }
   };
 
   const onSendRefferals = () => {
-    console.log("Form successfully submitted", entries);
-    setIsFormSubmitted(true);
-    setEntriesCount(entries.length);
-    resetEntries();
-    addNewEntry("reset");
-    setIsError(true);
+    if (!isError) {
+      console.log("Form successfully submitted", entries);
+      setIsFormSubmitted(true);
+      setEntriesCount(entries.length);
+      resetEntries();
+      addNewEntry("reset");
+      setIsError(true);
+    }
   };
 
   useEffect(() => {
     addNewEntry();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
