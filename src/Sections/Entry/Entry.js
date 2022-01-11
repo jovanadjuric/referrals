@@ -34,7 +34,8 @@ const Entry = ({
     setBirthDate(date);
     setData((prevData) => ({
       ...prevData,
-      dateOfBrith: date,
+      // eslint-disable-next-line no-useless-computed-key
+      ["dateOfBrith"]: date,
     }));
   };
 
