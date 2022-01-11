@@ -31,7 +31,8 @@ function App() {
   };
 
   const onSendRefferals = () => {
-    console.log("Form successfully submitted", entries);
+    console.table(entries);
+    alert("Entries successfully submitted! \n\nCheck the console.");
     setIsFormSubmitted(true);
     setEntriesCount(entries.length);
     resetEntries();
