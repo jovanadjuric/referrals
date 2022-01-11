@@ -67,6 +67,10 @@ h5 {
   border: none;
 }
 
+.btn-danger {
+  margin-right: 10px;
+}
+
 .disabled {
   background-color: #5274a7;
   cursor: default !important;
@@ -83,7 +87,7 @@ h5 {
 }
 
 .collapsed .data-row {
-  display: none; 
+  display: none;
 }
 .badge-secondary {
   background-color: #25a575;

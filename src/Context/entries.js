@@ -4,6 +4,8 @@ export const EntriesContext = createContext({
   entries: [],
   addEntry: () => {},
   removeEntry: () => {},
+  changeEntry: () => {},
+  resetEntries: () => {},
 });
 
 export const EntriesProvider = ({ children }) => {
@@ -18,12 +20,18 @@ export const EntriesProvider = ({ children }) => {
   };
 
   const changeEntry = (index, entry) => {
-    entries[index] = entry
+    entries[index] = entry;
     setEntries(entries);
-  }
+  };
+
+  const resetEntries = () => {
+    setEntries([]);
+  };
 
   return (
-    <EntriesContext.Provider value={{ entries, addEntry, removeEntry, changeEntry }}>
+    <EntriesContext.Provider
+      value={{ entries, addEntry, removeEntry, changeEntry, resetEntries }}
+    >
       {children}
     </EntriesContext.Provider>
   );

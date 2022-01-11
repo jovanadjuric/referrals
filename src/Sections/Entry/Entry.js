@@ -62,8 +62,8 @@ const Entry = ({
   };
 
   const handleAddressChange = (address) => {
-    returnData("address", address)
-  }
+    returnData("address", address);
+  };
 
   useEffect(() => {
     onChangeHandler(index, data);
@@ -82,22 +82,22 @@ const Entry = ({
             {data.firstName || "New referral"}
           </h5>
         </div>
-          <div className="">
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={handleOnDelete}
-            >
-              <i className="fa fa-trash"/>
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary"
-              onClick={handleCollapse}
-            >
-            <i className="fa fa-chevron-down"/>
-            </button>
-          </div>
+        <div className="">
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={handleOnDelete}
+          >
+            <i className="fa fa-trash" />
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleCollapse}
+          >
+            <i className="fa fa-chevron-down" />
+          </button>
+        </div>
       </div>
       <div className="row data-row">
         <div className="col-12 col-md-6 mb-2">
@@ -154,7 +154,7 @@ const Entry = ({
           />
         </div>
         <div className="col-12 mb-2">
-          <LocationSearchInput handleAddressChange={ handleAddressChange}/>
+          <LocationSearchInput handleAddressChange={handleAddressChange} />
         </div>
         <div className="col-12 mb-2">
           <Input
