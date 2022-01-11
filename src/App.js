@@ -51,7 +51,7 @@ function App() {
         <h3>Agents Only</h3>
       </header>
 
-      <div className="container w-80">
+      <div className="container w-60">
         {isFormSubmitted && <SuccessMessage count={entriesCount} />}
 
         <div className="text-center pt-4 pb-4">

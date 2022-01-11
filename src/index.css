@@ -114,3 +114,31 @@ h5 {
 .alert-success p {
   color: #fff !important;
 }
+
+.form-input {
+  width: 100%;
+  padding: 10px 20px;
+  border: 0;
+  border-bottom: 1px solid #3a719b;
+  margin-bottom: 20px;
+}
+
+.form-input::placeholder,
+.form-input {
+  color: #3a719b;
+}
+
+.form-input:focus-visible {
+  outline: none !important;
+}
+
+.input-container {
+  position: relative;
+}
+
+.fa-input {
+  position: absolute;
+  left: 0px;
+  top: 5px;
+  color: #b8c7cc;
+}

@@ -95,6 +95,7 @@ const Entry = ({
             placeholder="First Name"
             value={data.firstName}
             onChange={(evt) => returnData("firstName", evt.target.value)}
+            iconName="circle-user"
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
@@ -104,15 +105,20 @@ const Entry = ({
             placeholder="Last Name"
             value={data.lastName}
             onChange={(evt) => returnData("lastName", evt.target.value)}
+            iconName="circle-user"
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
-          <ReactDatePicker
-            selected={birthDate}
-            onChange={handleBirthDate}
-            excludeTimes
-            className="form-control"
-          />
+          <span className="input-container">
+            <ReactDatePicker
+              selected={birthDate}
+              onChange={handleBirthDate}
+              excludeTimes
+              className="form-input"
+              placeholderText="Date of Birth"
+            />
+            <i className={`fa fa-cake-candles fa-md fa-input`}></i>
+          </span>
         </div>
         <div className="col-12 col-md-6 mb-2">
           <Input
@@ -121,6 +127,7 @@ const Entry = ({
             placeholder="Contact Language"
             value={data.contactLanguage}
             onChange={(evt) => returnData("contactLanguage", evt.target.value)}
+            iconName="globe"
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
@@ -130,6 +137,7 @@ const Entry = ({
             placeholder="Phone"
             value={data.phone}
             onChange={handlePhoneField}
+            iconName="phone"
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
@@ -139,6 +147,7 @@ const Entry = ({
             placeholder="Email"
             value={data.email}
             onChange={handleEmailField}
+            iconName="envelope"
           />
         </div>
         <div className="col-12 mb-2">
