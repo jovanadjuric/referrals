@@ -28,6 +28,8 @@ const Entries = () => {
               onChangeHandler={changeEntry}
               onDeleteHandler={handleOnDelete}
               onCollapseHandler={handleCollapse}
+              count={entries.length}
+              activeAccordion={activeAccordion}
             />
           </div>
         ))}

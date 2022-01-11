@@ -9,6 +9,8 @@ const Entry = ({
   onChangeHandler,
   onDeleteHandler,
   onCollapseHandler,
+  count,
+  activeAccordion,
 }) => {
   const [data, setData] = useState({ ...entry });
   const [birthDate, setBirthDate] = useState(new Date());
@@ -59,29 +61,29 @@ const Entry = ({
 
   return (
     <div className="single-entry row">
-      <div className="d-flex justify-content-between align-items-center">
-        <div className="">
+      <div
+        onClick={handleCollapse}
+        className="d-flex justify-content-between align-items-center cursor-pointer"
+        role="button"
+      >
+        <div>
           <h5>
             <div className="badge badge-secondary">{index + 1}</div>
             {data.firstName || "New referral"}
           </h5>
         </div>
-        <div className="">
-          {index !== 0 && (
-            <button
-              type="button"
-              className="btn btn-danger"
-              onClick={handleOnDelete}
-            >
+        <div>
+          {count !== 1 && (
+            <button type="button" className="btn" onClick={handleOnDelete}>
               <i className="fa fa-trash" />
             </button>
           )}
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={handleCollapse}
-          >
-            <i className="fa fa-chevron-down" />
+          <button type="button" className="btn" onClick={handleCollapse}>
+            <i
+              className={`fa fa-chevron-${
+                activeAccordion === index ? "up" : "down"
+              }`}
+            />
           </button>
         </div>
       </div>
