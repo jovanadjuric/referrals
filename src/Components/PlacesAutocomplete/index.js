@@ -11,6 +11,7 @@ class LocationSearchInput extends React.Component {
   }
   handleChange = address => {
     this.setState({ address });
+    this.props.handleAddressChange(address, this.props.index);
   };
  
   handleSelect = address => {
@@ -19,7 +20,7 @@ class LocationSearchInput extends React.Component {
       .then(latLng => {
           console.log('Success', latLng)
           this.setState({ address });
-          this.props.handleAddressChange(address);
+          this.props.handleAddressChange(address, this.props.index);
     })
       .catch(error => console.error('Error', error));
   };
@@ -36,10 +37,13 @@ class LocationSearchInput extends React.Component {
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
-                className: 'location-search-input form-control',
-              })}
+                className: 'location-search-input form-control ' + (this.state.address ? '' : 'is-invalid'),
+              })} 
               value={this.state.address}
             />
+            {!this.state.address ?
+              <div className="invalid-feedback">Address is required</div> : null
+            }
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
               {suggestions.map((suggestion, index) => {

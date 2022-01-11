@@ -3,8 +3,7 @@ const Input = ({ type, placeholder, value, onChange }) => {
     type={type} 
     placeholder={placeholder} 
     value={value} 
-    onChange={onChange} 
-    required />;
+    onChange={onChange}  />;
 };
 
 export default Input;

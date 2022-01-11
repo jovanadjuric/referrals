@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import Entries from "./Sections/Entries/Entries";
+//import Entries from "./Sections/Entries/Entries";
+import Entries from "./Sections/Entries/EntriesFormHook";
 import Button from "./Components/Button/Button";
 import PlainButton from "./Components/Button/PlainButton";
 import { EntriesContext } from "./Context/entries";
@@ -50,15 +51,6 @@ function App() {
 
         <Entries setIsError={setIsError} />
 
-        <PlainButton
-          onClick={addNewEntry}
-          text={"+Add another referral"}
-        ></PlainButton>
-        <Button
-          onClick={onSaveRefferals}
-          text="Save referrals"
-          isDisabled={isError}
-        />
       </div>
     </>
   );
