@@ -25,8 +25,9 @@ function App() {
 
   const { addEntry, entries, resetEntries } = useContext(EntriesContext);
 
-  const addNewEntry = () => {
-    if (entries.length < 5) {
+  const addNewEntry = (type) => {
+    console.log(entries.length);
+    if (entries.length < 5 || type === "reset") {
       addEntry(defaultFields);
     }
   };
@@ -36,11 +37,12 @@ function App() {
     setIsFormSubmitted(true);
     setEntriesCount(entries.length);
     resetEntries();
-    addNewEntry();
+    addNewEntry("reset");
+    setIsError(true);
   };
 
   useEffect(() => {
-    addNewEntry(defaultFields);
+    addNewEntry();
   }, []);
 
   return (
