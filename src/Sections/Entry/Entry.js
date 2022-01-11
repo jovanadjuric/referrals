@@ -67,13 +67,15 @@ const Entry = ({
           </h5>
         </div>
         <div className="">
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={handleOnDelete}
-          >
-            <i className="fa fa-trash" />
-          </button>
+          {index !== 0 && (
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleOnDelete}
+            >
+              <i className="fa fa-trash" />
+            </button>
+          )}
           <button
             type="button"
             className="btn btn-primary"
