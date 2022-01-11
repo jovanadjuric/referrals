@@ -39,11 +39,11 @@ const Entry = ({
   };
 
   const handleEmailField = (evt) => {
-    returnData("email", evt.target.value);
+    returnData("email", evt);
   };
 
   const handlePhoneField = (evt) => {
-    returnData("phone", evt.target.value);
+    returnData("phone", evt);
   };
 
   const handleAddressChange = (address) => {
@@ -92,20 +92,22 @@ const Entry = ({
           <Input
             type="text"
             required
-            placeholder="First Name"
+            placeholder="First Name*"
             value={data.firstName}
-            onChange={(evt) => returnData("firstName", evt.target.value)}
+            onChange={(evt) => returnData("firstName", evt)}
             iconName="circle-user"
+            isRequired={true}
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
           <Input
             type="text"
             required
-            placeholder="Last Name"
+            placeholder="Last Name*"
             value={data.lastName}
-            onChange={(evt) => returnData("lastName", evt.target.value)}
+            onChange={(evt) => returnData("lastName", evt)}
             iconName="circle-user"
+            isRequired={true}
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
@@ -115,7 +117,7 @@ const Entry = ({
               onChange={handleBirthDate}
               excludeTimes
               className="form-input"
-              placeholderText="Date of Birth"
+              placeholderText="Date of Birth*"
             />
             <i className={`fa fa-cake-candles fa-md fa-input`}></i>
           </span>
@@ -124,30 +126,33 @@ const Entry = ({
           <Input
             type="text"
             required
-            placeholder="Contact Language"
+            placeholder="Contact Language*"
             value={data.contactLanguage}
-            onChange={(evt) => returnData("contactLanguage", evt.target.value)}
+            onChange={(evt) => returnData("contactLanguage", evt)}
             iconName="globe"
+            isRequired={true}
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
           <Input
             type="text"
             required
-            placeholder="Phone"
+            placeholder="Phone*"
             value={data.phone}
             onChange={handlePhoneField}
             iconName="phone"
+            isRequired={true}
           />
         </div>
         <div className="col-12 col-md-6 mb-2">
           <Input
             type="email"
             required
-            placeholder="Email"
+            placeholder="Email*"
             value={data.email}
             onChange={handleEmailField}
             iconName="envelope"
+            isRequired={true}
           />
         </div>
         <div className="col-12 mb-2">
@@ -158,7 +163,7 @@ const Entry = ({
             type="text"
             placeholder="Notes / Reason"
             value={data.notes}
-            onChange={(evt) => returnData("notes", evt.target.value)}
+            onChange={(evt) => returnData("notes", evt)}
           />
         </div>
       </div>

@@ -31,7 +31,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## What should be done if given more time
 
-- Validation of the input fields
 - Connect the app with the backend
 - Languages dropdown that fetches the languages from an external API
 - CSS should be converted to SCSS and some modern methodologies should be used

@@ -6,12 +6,12 @@ import { EntriesContext } from "./Context/entries";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-datepicker/dist/react-datepicker.css";
 import SuccessMessage from "./Components/SuccessMessage";
+import { checkIfEntriesAreValid } from "./utils/functions";
 
 function App() {
   const defaultFields = {
     firstName: "",
     lastName: "",
-    dateOfBirth: "",
     contactLanguage: "",
     phone: "",
     email: "",
@@ -21,7 +21,7 @@ function App() {
 
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [entriesCount, setEntriesCount] = useState(0);
-
+  const [isError, setIsError] = useState(false);
   const { addEntry, entries, resetEntries } = useContext(EntriesContext);
 
   const addNewEntry = (type) => {
@@ -31,12 +31,20 @@ function App() {
   };
 
   const onSendRefferals = () => {
-    console.table(entries);
-    alert("Entries successfully submitted! \n\nCheck the console.");
-    setIsFormSubmitted(true);
-    setEntriesCount(entries.length);
-    resetEntries();
-    addNewEntry("reset");
+    const isFormValid = checkIfEntriesAreValid();
+    if (isFormValid) {
+      setIsError(false);
+      setIsFormSubmitted(true);
+      setEntriesCount(entries.length);
+      resetEntries();
+      addNewEntry("reset");
+      console.table(entries);
+      setTimeout(() => {
+        alert("Entries successfully submitted! \n\nCheck the console.");
+      }, 100);
+    } else {
+      setIsError(true);
+    }
   };
 
   useEffect(() => {
@@ -66,7 +74,11 @@ function App() {
           text={"+Add another referral"}
         ></PlainButton>
 
-        <Button onClick={onSendRefferals} text="Send referrals" />
+        <Button
+          onClick={onSendRefferals}
+          text="Send referrals"
+          isDisabled={isError}
+        />
       </div>
     </>
   );

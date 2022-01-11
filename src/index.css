@@ -142,3 +142,12 @@ h5 {
   top: 5px;
   color: #b8c7cc;
 }
+
+.form-input.is-invalid {
+  color: red;
+  border-bottom: 1px solid red;
+}
+
+.field-validation {
+  color: red;
+}
