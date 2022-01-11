@@ -78,13 +78,21 @@ h5 {
   margin-bottom: 8px;
 }
 
-.single-entry h5 {
-  padding: 20px 0;
+.row.data-row {
+  padding: 20px 50px;
 }
 
+.collapsed .data-row {
+  display: none; 
+}
 .badge-secondary {
   background-color: #25a575;
   border-radius: 0 !important;
   padding: 15px !important;
   margin-right: 16px;
+  margin-left: -15px;
+}
+
+h5 {
+  margin-bottom: 0 !important;
 }

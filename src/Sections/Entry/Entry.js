@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Input from "../../Components/Input";
+import LocationSearchInput from "../../Components/PlacesAutocomplete";
 import { validateEmail, validatePhone } from "../../utils/validator";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
 import ReactDatePicker from "react-datepicker";
@@ -9,6 +10,7 @@ const Entry = ({
   index,
   onChangeHandler,
   onDeleteHandler,
+  onCollapseHandler,
   setIsError,
 }) => {
   const [data, setData] = useState({ ...entry });
@@ -23,6 +25,10 @@ const Entry = ({
 
   const handleOnDelete = () => {
     onDeleteHandler(index);
+  };
+
+  const handleCollapse = () => {
+    onCollapseHandler(index);
   };
 
   const handleBirthDate = (date) => {
@@ -55,6 +61,10 @@ const Entry = ({
     returnData("phone", evt.target.value);
   };
 
+  const handleAddressChange = (address) => {
+    returnData("address", address)
+  }
+
   useEffect(() => {
     onChangeHandler(index, data);
   }, [index, data]);
@@ -63,37 +73,34 @@ const Entry = ({
     setData({ ...entry });
   }, [entry]);
 
-  useEffect(() => {
-    geocodeByAddress(entry.address)
-      .then((results) => getLatLng(results[0]))
-      .then((latLng) => {
-        console.log(latLng);
-      });
-  }, [entry.address]);
-
   return (
-    <div className="row single-entry">
-      <div className="row">
-        <div className="col-10">
+    <div className="single-entry row">
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="">
           <h5>
             <div className="badge badge-secondary">{index + 1}</div>
             {data.firstName || "New referral"}
           </h5>
         </div>
-        {index !== 0 && (
-          <div className="col-2">
+          <div className="">
             <button
               type="button"
               className="btn btn-danger"
               onClick={handleOnDelete}
             >
-              X
+              <i className="fa fa-trash"/>
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={handleCollapse}
+            >
+            <i className="fa fa-chevron-down"/>
             </button>
           </div>
-        )}
       </div>
-      <div className="col-6">
-        <div className="input-group mb-2">
+      <div className="row data-row">
+        <div className="col-12 col-md-6 mb-2">
           <Input
             type="text"
             required
@@ -102,32 +109,7 @@ const Entry = ({
             onChange={(evt) => returnData("firstName", evt.target.value)}
           />
         </div>
-        <div className="input-group mb-2">
-          {/* <Input
-            type="text"
-            required
-            placeholder="Date of birth"
-            value={data.dateOfBirth}
-            onChange={(evt) => returnData("dateOfBirth", evt.target.value)}
-          /> */}
-          <ReactDatePicker
-            selected={birthDate}
-            onChange={handleBirthDate}
-            excludeTimes
-          />
-        </div>
-        <div className="input-group mb-2">
-          <Input
-            type="text"
-            required
-            placeholder="Phone"
-            value={data.phone}
-            onChange={handlePhoneField}
-          />
-        </div>
-      </div>
-      <div className="col-6">
-        <div className="input-group mb-2">
+        <div className="col-12 col-md-6 mb-2">
           <Input
             type="text"
             required
@@ -136,7 +118,15 @@ const Entry = ({
             onChange={(evt) => returnData("lastName", evt.target.value)}
           />
         </div>
-        <div className="input-group mb-2">
+        <div className="col-12 col-md-6 mb-2">
+          <ReactDatePicker
+            selected={birthDate}
+            onChange={handleBirthDate}
+            excludeTimes
+            className="form-control"
+          />
+        </div>
+        <div className="col-12 col-md-6 mb-2">
           <Input
             type="text"
             required
@@ -145,7 +135,16 @@ const Entry = ({
             onChange={(evt) => returnData("contactLanguage", evt.target.value)}
           />
         </div>
-        <div className="input-group mb-2">
+        <div className="col-12 col-md-6 mb-2">
+          <Input
+            type="text"
+            required
+            placeholder="Phone"
+            value={data.phone}
+            onChange={handlePhoneField}
+          />
+        </div>
+        <div className="col-12 col-md-6 mb-2">
           <Input
             type="email"
             required
@@ -154,18 +153,10 @@ const Entry = ({
             onChange={handleEmailField}
           />
         </div>
-      </div>
-      <div className="col-12 mb-4">
-        <div className="input-group mb-2">
-          <Input
-            type="text"
-            required
-            placeholder="Address"
-            value={data.address}
-            onChange={(evt) => returnData("address", evt.target.value)}
-          />
+        <div className="col-12 mb-2">
+          <LocationSearchInput handleAddressChange={ handleAddressChange}/>
         </div>
-        <div className="input-group mb-2">
+        <div className="col-12 mb-2">
           <Input
             type="text"
             placeholder="Notes / Reason"
